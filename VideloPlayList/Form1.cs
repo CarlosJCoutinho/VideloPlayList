@@ -14,8 +14,10 @@ namespace VideloPlayList
 {
     public partial class Form1 : Form
     {
+        
+        
         //1. Declare the delegate
-        public delegate void Delegate01(string string01, WMPLib.IWMPPlaylist playlist01);
+        public delegate void Delegate01(WMPLib.IWMPPlaylist playlist01);
 
         //2. Create the delegate variable
         public Delegate01 delegate01;
@@ -28,7 +30,10 @@ namespace VideloPlayList
             axWindowsMediaPlayer.settings.autoStart = false;
         }
 
+        // Global variables
         WMPLib.IWMPPlaylist videoPlayList;
+        Form2 form2 = null;
+        Form2 openedForm = null;
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
@@ -51,8 +56,6 @@ namespace VideloPlayList
                     axWindowsMediaPlayer.Ctlcontrols.play();
                     timer.Start();
                     */
-
-
                 }
                 axWindowsMediaPlayer.settings.playCount = 10000;
             }
@@ -91,6 +94,12 @@ namespace VideloPlayList
                 }
                 ficheiro.Close();
             }
+            videoPlayList = axWindowsMediaPlayer.playlistCollection.newPlaylist("Lista de videos");
+            for (int i = 0; i < listBox.Items.Count; i++)
+            {
+                videoPlayList.appendItem(axWindowsMediaPlayer.newMedia(listBox.Items[i].ToString()));
+                axWindowsMediaPlayer.currentPlaylist = videoPlayList;
+            }
         }
 
         private void listBox_DoubleClick(object sender, EventArgs e)
@@ -110,16 +119,19 @@ namespace VideloPlayList
 
         private void buttonDisplay_Click(object sender, EventArgs e)
         {
-            Form2 form2 = new Form2();
+            if (listBox.Items.Count > 0)
+            {
+                form2 = new Form2();
 
-            //4. Assign the delegate
-            this.delegate01 += new Delegate01(form2.Subscription);
+                //4. Assign the delegate
+                this.delegate01 += new Delegate01(form2.Subscription);
+                form2.Show();
 
-            form2.Show();
-
-            //5. Call the delegate
-            delegate01("Test", videoPlayList);
-
+                //5. Call the delegate
+                delegate01(videoPlayList);
+                buttonOpenDisplay.Enabled = false;
+                buttonCloseDisplay.Enabled = true;
+            }
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -226,6 +238,37 @@ namespace VideloPlayList
         {
             if (e.newState == 1)
                 this.axWindowsMediaPlayerAlt.Ctlcontrols.play();
+        }
+
+        private void buttonCloseDisplay_Click(object sender, EventArgs e)
+        {
+            if (form2 != null)
+            {
+                form2.Close();
+                form2 = null;
+                buttonOpenDisplay.Enabled = true;
+                buttonCloseDisplay.Enabled = false;
+            }
+        }
+
+        private void buttonOpenForm_Click(object sender, EventArgs e)
+        {
+            if (openedForm == null)
+            {
+                //There is no Form, so create and open it
+                openedForm = new Form2();
+                openedForm.Show();
+            }
+        }
+
+        private void buttonCloseForm_Click(object sender, EventArgs e)
+        {
+            if (openedForm != null)
+            {
+                //there is a form. So close and get rid of the reference
+                openedForm.Close();
+                openedForm = null;
+            }
         }
     }
 }

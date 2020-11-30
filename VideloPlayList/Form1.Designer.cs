@@ -38,7 +38,7 @@
             this.buttonClear = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.buttonDisplay = new System.Windows.Forms.Button();
+            this.buttonOpenDisplay = new System.Windows.Forms.Button();
             this.buttonPause = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonPlay = new System.Windows.Forms.Button();
@@ -61,6 +61,9 @@
             this.buttonOpen2 = new System.Windows.Forms.Button();
             this.labelMessage = new System.Windows.Forms.Label();
             this.textBoxForeach = new System.Windows.Forms.TextBox();
+            this.buttonCloseDisplay = new System.Windows.Forms.Button();
+            this.buttonCloseForm = new System.Windows.Forms.Button();
+            this.buttonOpenForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayerAlt)).BeginInit();
             this.SuspendLayout();
@@ -125,15 +128,15 @@
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // buttonDisplay
+            // buttonOpenDisplay
             // 
-            this.buttonDisplay.Location = new System.Drawing.Point(449, 474);
-            this.buttonDisplay.Name = "buttonDisplay";
-            this.buttonDisplay.Size = new System.Drawing.Size(75, 23);
-            this.buttonDisplay.TabIndex = 6;
-            this.buttonDisplay.Text = "Display";
-            this.buttonDisplay.UseVisualStyleBackColor = true;
-            this.buttonDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
+            this.buttonOpenDisplay.Location = new System.Drawing.Point(432, 474);
+            this.buttonOpenDisplay.Name = "buttonOpenDisplay";
+            this.buttonOpenDisplay.Size = new System.Drawing.Size(92, 23);
+            this.buttonOpenDisplay.TabIndex = 6;
+            this.buttonOpenDisplay.Text = "Open Display";
+            this.buttonOpenDisplay.UseVisualStyleBackColor = true;
+            this.buttonOpenDisplay.Click += new System.EventHandler(this.buttonDisplay_Click);
             // 
             // buttonPause
             // 
@@ -331,11 +334,45 @@
             this.textBoxForeach.TabIndex = 29;
             this.textBoxForeach.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // buttonCloseDisplay
+            // 
+            this.buttonCloseDisplay.Enabled = false;
+            this.buttonCloseDisplay.Location = new System.Drawing.Point(432, 500);
+            this.buttonCloseDisplay.Name = "buttonCloseDisplay";
+            this.buttonCloseDisplay.Size = new System.Drawing.Size(92, 23);
+            this.buttonCloseDisplay.TabIndex = 30;
+            this.buttonCloseDisplay.Text = "Close Display";
+            this.buttonCloseDisplay.UseVisualStyleBackColor = true;
+            this.buttonCloseDisplay.Click += new System.EventHandler(this.buttonCloseDisplay_Click);
+            // 
+            // buttonCloseForm
+            // 
+            this.buttonCloseForm.Location = new System.Drawing.Point(1004, 500);
+            this.buttonCloseForm.Name = "buttonCloseForm";
+            this.buttonCloseForm.Size = new System.Drawing.Size(92, 23);
+            this.buttonCloseForm.TabIndex = 32;
+            this.buttonCloseForm.Text = "Close Form";
+            this.buttonCloseForm.UseVisualStyleBackColor = true;
+            this.buttonCloseForm.Click += new System.EventHandler(this.buttonCloseForm_Click);
+            // 
+            // buttonOpenForm
+            // 
+            this.buttonOpenForm.Location = new System.Drawing.Point(1004, 474);
+            this.buttonOpenForm.Name = "buttonOpenForm";
+            this.buttonOpenForm.Size = new System.Drawing.Size(92, 23);
+            this.buttonOpenForm.TabIndex = 31;
+            this.buttonOpenForm.Text = "Open Form";
+            this.buttonOpenForm.UseVisualStyleBackColor = true;
+            this.buttonOpenForm.Click += new System.EventHandler(this.buttonOpenForm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1111, 599);
+            this.Controls.Add(this.buttonCloseForm);
+            this.Controls.Add(this.buttonOpenForm);
+            this.Controls.Add(this.buttonCloseDisplay);
             this.Controls.Add(this.textBoxForeach);
             this.Controls.Add(this.labelMessage);
             this.Controls.Add(this.buttonOpen2);
@@ -357,7 +394,7 @@
             this.Controls.Add(this.buttonPlay);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonPause);
-            this.Controls.Add(this.buttonDisplay);
+            this.Controls.Add(this.buttonOpenDisplay);
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.buttonSave);
@@ -385,7 +422,7 @@
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.Button buttonDisplay;
+        private System.Windows.Forms.Button buttonOpenDisplay;
         private System.Windows.Forms.Button buttonPause;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.Button buttonPlay;
@@ -408,6 +445,9 @@
         private System.Windows.Forms.Button buttonOpen2;
         private System.Windows.Forms.Label labelMessage;
         private System.Windows.Forms.TextBox textBoxForeach;
+        private System.Windows.Forms.Button buttonCloseDisplay;
+        private System.Windows.Forms.Button buttonCloseForm;
+        private System.Windows.Forms.Button buttonOpenForm;
     }
 }
 
